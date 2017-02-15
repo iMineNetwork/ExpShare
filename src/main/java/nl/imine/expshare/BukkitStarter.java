@@ -50,12 +50,6 @@ public class BukkitStarter extends JavaPlugin{
 
         Instances.playerExperienceDao = new PlayerExperienceDao();
         Instances.playerExperienceService = new PlayerExperienceService();
-
-        PlayerExperience playerExperience = new PlayerExperience();
-        playerExperience.setPlayerId(UUID.randomUUID());
-        playerExperience.setLevels(5);
-        playerExperience.setExp(4.5f);
-        Instances.playerExperienceDao.insert(playerExperience);
     }
 
     public static Plugin getInstance(){
