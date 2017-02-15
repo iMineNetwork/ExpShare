@@ -1,5 +1,6 @@
 package nl.imine.expshare;
 
+import java.sql.SQLException;
 import java.util.UUID;
 
 import nl.imine.expshare.config.MySQLConfig;
@@ -29,6 +30,11 @@ public class BukkitStarter extends JavaPlugin{
     public void onDisable() {
         plugin = null;
         Instances.mySQLConfig = null;
+        try {
+            Instances.mySQLService.getConnection().close();
+        } catch (SQLException e) {
+            System.err.println("Could not close MySQL Connection | " + e.getMessage());
+        }
         Instances.mySQLService = null;
         Instances.playerExperienceService = null;
         Instances.playerExperienceDao = null;
